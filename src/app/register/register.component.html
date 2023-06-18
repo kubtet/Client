@@ -1,0 +1,16 @@
+<div class="container" style="text-align: center;" *ngIf="!(accountService.currentUser$ | async)">
+    <form #registerForm="ngForm" role="register" style="text-align: center;" (ngSubmit)="register()" autocomplete="off">
+        <input name="login" [(ngModel)]="model.login" type="username" style="width: 250px; margin-bottom: 20px;"
+            placeholder="Login"> <br>
+        <input name="password" [(ngModel)]="model.password" type="password" style="width: 250px; margin-bottom: 20px;"
+            placeholder="Password"> <br>
+        <input name="email" type="email" style="width: 250px; margin-bottom: 20px;" placeholder="Email"> <br>
+        <input name="Birth date" type="date" style="width: 250px; margin-bottom: 20px;" placeholder="Birth date"> <br>
+        <button class="btn btn-outline-info"
+            style="background-color: lightseagreen; border-color: lightseagreen; color: white;"
+            type="submit">Register</button>
+        <h4 class="mt-5">Already have an account?</h4>
+        <button class="btn btn-outline-info mt-3" (click)="login()"
+            style="background-color: lightseagreen; border-color: lightseagreen; color: white;">Log in now</button>
+    </form>
+</div>

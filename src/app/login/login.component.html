@@ -1,0 +1,14 @@
+<div class="container" style="text-align: center;" *ngIf="!(accountService.currentUser$ | async)">
+    <form #loginForm="ngForm" role="login" style="text-align: center;" (ngSubmit)="login()" autocomplete="off">
+        <input name="login" [(ngModel)]="model.login" type="username" style="width: 250px; margin-bottom: 20px;"
+            placeholder="Login"> <br>
+        <input name="password" [(ngModel)]="model.password" type="password" style="width: 250px; margin-bottom: 20px;"
+            placeholder="Password"> <br>
+        <button class="btn btn-outline-info"
+            style="background-color: lightseagreen; border-color: lightseagreen; color: white;" type="submit">Log
+            in</button>
+        <h4 class="mt-5">New member?</h4>
+        <button class="btn btn-outline-info mt-3" (click)="register()"
+            style="background-color: lightseagreen; border-color: lightseagreen; color: white;">Sign up now</button>
+    </form>
+</div>
