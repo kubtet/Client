@@ -1,0 +1,1 @@
+<p *ngIf="(accountService.currentUser$ | async) as user">It's your profile {{ user.login | titlecase }}</p>
