@@ -8,9 +8,15 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { BookListComponent } from './books/book-list/book-list.component';
+import { BookLikedComponent } from './books/book-liked/book-liked.component';
+import { BookToreadComponent } from './books/book-toread/book-toread.component';
+import { BookFinishedComponent } from './books/book-finished/book-finished.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { BookDetailComponent } from './books/book-detail/book-detail.component';
+import { SharedModule } from './_modules/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,15 +24,21 @@ import { RegisterComponent } from './register/register.component';
     NavComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    BookListComponent,
+    BookLikedComponent,
+    BookToreadComponent,
+    BookFinishedComponent,
+    UserProfileComponent,
+    BookDetailComponent
   ],
   imports: [
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

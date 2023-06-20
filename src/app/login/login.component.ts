@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AccountService } from '../_services/account.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ export class LoginComponent implements OnInit {
   model: any = {};
   @Output() toRegister = new EventEmitter();
 
-  constructor(public accountService: AccountService) { }
+  constructor(public accountService: AccountService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -20,7 +21,10 @@ export class LoginComponent implements OnInit {
       next: response => {
         console.log(response)
       },
-      error: error => console.log(error)
+      error: error => {
+        this.toastr.error(error.error),
+        console.log(error)
+      }
     })
   }
 
