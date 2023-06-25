@@ -17,6 +17,7 @@ import { BookFinishedComponent } from './books/book-finished/book-finished.compo
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
 import { SharedModule } from './_modules/shared.module';
+import { BookCardComponent } from './books/book-card/book-card.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SharedModule } from './_modules/shared.module';
     BookToreadComponent,
     BookFinishedComponent,
     UserProfileComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    BookCardComponent
   ],
   imports: [
     BrowserAnimationsModule,

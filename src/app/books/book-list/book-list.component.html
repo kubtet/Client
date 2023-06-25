@@ -1,1 +1,5 @@
-<p>book-list works!</p>
+<div class="row">
+    <div class="col-2" *ngFor="let book of books">
+        <app-book-card [book]="book"></app-book-card>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="card mb-4" *ngIf="book">
+    <div class="card-img-wrapper">
+        <img src="{{ book.coverPath }}" alt="{{ book.title }}" class="card-img-top" style="height: 275px;"
+            routerLink="/books/{{ book.id }}">
+    </div>
+    <div class="card-body p-1" style="height: 75px;">
+        <h6 class="card-title text-center mb-1" style="color: rgb(60, 143, 138);">
+            <i class="fa fa-book me-2"></i>
+            {{ book.title }}
+        </h6>
+        <p class="card-text text-muted text-center">{{ book.authorName }} {{ book.authorSurname }}</p>
+    </div>
+</div>

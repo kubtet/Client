@@ -1,8 +1,8 @@
-<h1 style="font-size: xx-large; margin-bottom: 50px; text-align: center;">Welcome to BookShelf!</h1>
+<h1 style="font-size: xx-large; margin-bottom: 50px; text-align: center;"
+    *ngIf="!(accountService.currentUser$ | async)">Welcome to
+    BookShelf!</h1>
+<h1 style="font-size: xx-large; margin-bottom: 50px; text-align: center; color: rgb(72, 77, 77);" *ngIf="(accountService.currentUser$ | async)">
+    Find your journey...</h1>
 <app-login (toRegister)="modeToggler($event)" *ngIf="!registerMode"></app-login>
 <app-register (toLogin)="modeToggler($event)" *ngIf="registerMode"></app-register>
-<ul *ngIf="accountService.currentUser$ | async">
-  <li *ngFor="let user of users">
-    {{ user.id }} - {{ user.login }}
-  </li>
-</ul>
+<app-book-list *ngIf="accountService.currentUser$ | async"></app-book-list>
