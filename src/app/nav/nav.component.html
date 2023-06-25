@@ -10,11 +10,12 @@
             </form>
         </div>
 
-        <a class="routerLink me-3" routerLink="/liked" routerLinkActive="active"
-            *ngIf="accountService.currentUser$ | async"><i class="bi bi-bookmark-heart me-2"
-                style="font-size: xx-large; color: white;"></i></a>
+
         <a class="routerLink me-3" routerLink="/toread" routerLinkActive="active"
             *ngIf="accountService.currentUser$ | async"><i class="bi bi-bookmark-star me-2"
+                style="font-size: xx-large; color: white;"></i></a>
+        <a class="routerLink me-3" routerLink="/liked" routerLinkActive="active"
+            *ngIf="accountService.currentUser$ | async"><i class="bi bi-bookmark-heart me-2"
                 style="font-size: xx-large; color: white;"></i></a>
         <a class="routerLink me-3" routerLink="/finished" routerLinkActive="active"
             *ngIf="accountService.currentUser$ | async"><i class="bi bi-bookmark-check me-2"

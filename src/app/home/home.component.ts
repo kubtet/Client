@@ -9,12 +9,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
   users: any;
+  books: any;
   registerMode = false;
 
   constructor(public accountService: AccountService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getUsers();
+    this.getBooks();
+    console.log(this.books);
   }
 
   getUsers() {
@@ -22,6 +25,13 @@ export class HomeComponent implements OnInit {
       next: response => this.users = response,
       error: error => console.log(error),
       complete: () => console.log('Request has completed')
+    })
+  }
+
+  getBooks() {
+    this.http.get('https://localhost:5001/api/books').subscribe({
+      next: response => this.books = response,
+      error: error => console.log(error)
     })
   }
 
