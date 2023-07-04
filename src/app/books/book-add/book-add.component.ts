@@ -79,6 +79,9 @@ export class BookAddComponent implements OnInit {
           this.genres.push(createdGenre);
           this.bookGenres.push({ ...createdGenre }); // Create a new instance of the genre object
           this.toastr.success("Genre added properly");
+        },
+        error: error => {
+          this.toastr.error("Something wrong with a new genre")
         }
       });
     } else {
@@ -88,6 +91,9 @@ export class BookAddComponent implements OnInit {
           this.genre = genre;
           this.bookGenres.push({ ...genre }); // Create a new instance of the genre object
           this.toastr.success("Genre added properly");
+        },
+        error: error => {
+          this.toastr.error("Something wrong with an old genre")
         }
       });
     }

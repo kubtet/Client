@@ -1,0 +1,15 @@
+.card-body {
+    padding: 0 25px;
+}
+
+.row {
+    margin-left: 16%;
+}
+
+th, td {
+    width: 33%;
+}
+
+tr {
+    cursor: pointer;
+}

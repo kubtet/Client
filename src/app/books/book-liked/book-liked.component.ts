@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from 'src/app/_models/Book';
+import { BooksService } from 'src/app/_services/books.service';
 
 @Component({
   selector: 'app-book-liked',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-liked.component.css']
 })
 export class BookLikedComponent implements OnInit {
+  books: Book[] = [];
 
-  constructor() { }
+  constructor(private bookService: BooksService) { }
 
   ngOnInit(): void {
+    this.getLikedBooks();
+  }
+
+  getLikedBooks() {
+    this.bookService.getLiked().subscribe({
+      next: books => {
+        this.books = books
+      }
+    })
   }
 
 }

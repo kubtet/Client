@@ -30,13 +30,10 @@
                     </table>
                     <div>
                         <button type="button" class="btn btn-success btn-s"
-                            [disabled]="!uploader?.getNotUploadedItems()?.length" (click)="uploadCover()">
-                            <span class="fa fa-upload"></span> Upload
-                        </button>
+                            [disabled]="!uploader?.getNotUploadedItems()?.length"
+                            (click)="uploadCover()">Upload</button>
                         <button type="button" class="btn btn-danger btn-s" (click)="uploader?.clearQueue()"
-                            [disabled]="!uploader?.queue?.length">
-                            <span class="fa fa-trash"></span> Remove
-                        </button>
+                            [disabled]="!uploader?.queue?.length">Cancel</button>
                     </div>
                 </div>
             </div>

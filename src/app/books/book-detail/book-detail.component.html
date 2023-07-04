@@ -17,9 +17,9 @@
             <p>{{ book.description }}</p>
         </div>
         <div class="card-footer">
-            <button class="btn btn-outline-info"><i class="bi bi-bookmark-star me-2"
+            <button class="btn btn-outline-info" (click)="addToRead()"><i class="bi bi-bookmark-star me-2"
                 style="font-size: large; color: white;"></i>Mark to read</button>
-            <button class="btn btn-outline-info"><i class="bi bi-bookmark-heart me-2"
+            <button class="btn btn-outline-info" (click)="like()"><i class="bi bi-bookmark-heart me-2"
                 style="font-size: large; color: white;"></i>Like</button>
             <button class="btn btn-outline-info"><i class="bi bi-bookmark-check me-2"
                 style="font-size: large; color: white;"></i>Mark as read</button>
