@@ -14,12 +14,12 @@ import { BookListComponent } from './books/book-list/book-list.component';
 import { BookLikedComponent } from './books/book-liked/book-liked.component';
 import { BookToreadComponent } from './books/book-toread/book-toread.component';
 import { BookFinishedComponent } from './books/book-finished/book-finished.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
 import { SharedModule } from './_modules/shared.module';
 import { BookCardComponent } from './books/book-card/book-card.component';
 import { BookAddComponent } from './books/book-add/book-add.component';
 import { BookAddCoverComponent } from './books/book-add-cover/book-add-cover.component';
+import { BookDeleteComponent } from './books/book-delete/book-delete.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +32,11 @@ import { BookAddCoverComponent } from './books/book-add-cover/book-add-cover.com
     BookLikedComponent,
     BookToreadComponent,
     BookFinishedComponent,
-    UserProfileComponent,
     BookDetailComponent,
     BookCardComponent,
     BookAddComponent,
-    BookAddCoverComponent
+    BookAddCoverComponent,
+    BookDeleteComponent,
   ],
   imports: [
     BrowserAnimationsModule,
