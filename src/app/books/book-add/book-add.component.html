@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="card col-5">
+        <div class="card-body">
+            <h4 class="mb-2 mt-2" style="color: rgb(72, 77, 77);">Add the author</h4>
+            <form #addForm="ngForm" role="addAuthor" style="display: flex; flex-direction: column;"
+                (ngSubmit)="addAuthor()">
+                <strong>Name:</strong>
+                <input class="input" [(ngModel)]="author.name" type="text" name="Name" autocomplete="new-password"
+                    (input)="checkAuthor()" [disabled]="authorDone"><br>
+                <strong>Surname:</strong>
+                <input class="input" [(ngModel)]="author.surname" type="text" name="Surname" autocomplete="new-password"
+                    (input)="checkAuthor()" [disabled]="authorDone"><br>
+                <strong>Country:</strong>
+                <input class="input" [(ngModel)]="author.country" type="text" name="Country" autocomplete="new-password"
+                    (input)="checkAuthor()" [disabled]="authorDone"><br>
+                <button class="btn btn-outline-info" [disabled]="disabledAuthorBtn || authorDone" type="submit">Confirm
+                    author</button>
+            </form>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2 mt-2" style="color: rgb(72, 77, 77);">Add genres</h4>
+            <form #addForm="ngForm" role="addGenre" style="display: flex; flex-direction: column;"
+                (ngSubmit)="addGenre()">
+                <strong>Genre:</strong>
+                <input class="input" [(ngModel)]="genre.name" type="text" name="Genre" autocomplete="new-password"
+                    (input)="checkGenre()"><br>
+                <button class="btn btn-outline-info" [disabled]="disabledGenreBtn" type="submit">Confirm
+                    genre</button>
+            </form> 
+        </div>
+    </div>
+    <div class="card col-5">
+        <div class="card-body">
+            <h4 class="mb-2 mt-2" style="color: rgb(72, 77, 77);">Add the book</h4>
+            <form #addForm="ngForm" role="addBook" style="display: flex; flex-direction: column;"
+                (ngSubmit)="addBook()">
+                <strong>Title:</strong>
+                <input class="input" [(ngModel)]="book.title" type="text" name="Title" autocomplete="new-password"
+                    (input)="checkBook()" [disabled]="bookCreated"><br>
+                <strong>International Standad Book Number:</strong>
+                <input class="input" [(ngModel)]="book.isbn" type="text" name="ISBN" autocomplete="new-password"
+                    (input)="checkBook()" [disabled]="bookCreated"><br>
+                <strong>Publish date:</strong>
+                <input class="input" [(ngModel)]="book.publish_date" type="date" name="PublishDate"
+                    autocomplete="new-password" (input)="checkBook()" [disabled]="bookCreated"><br>
+                <strong>Description:</strong>
+                <input class="input" [(ngModel)]="book.description" type="text" name="Description"
+                    autocomplete="new-password" (input)="checkBook()" [disabled]="bookCreated"><br>
+                <button class="btn btn-outline-info" [disabled]="disabledBookBtn || bookCreated" type="submit">Confirm
+                    book</button>
+            </form>
+        </div>
+    </div>
+</div>

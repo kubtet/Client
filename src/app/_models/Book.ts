@@ -10,3 +10,18 @@ export interface Book {
   usersRead: string
   genres: any[]
 }
+
+export class Book {
+  
+  constructor() {
+    this.title = '',
+    this.isbn = '',
+    this.coverPath = '',
+    this.publish_date = '',
+    this.userLikes = 0,
+    this.authorName = '',
+    this.authorSurname = '',
+    this.usersRead = '',
+    this.genres = []    
+  }
+}

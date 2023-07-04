@@ -18,6 +18,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
 import { SharedModule } from './_modules/shared.module';
 import { BookCardComponent } from './books/book-card/book-card.component';
+import { BookAddComponent } from './books/book-add/book-add.component';
+import { BookAddCoverComponent } from './books/book-add-cover/book-add-cover.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { BookCardComponent } from './books/book-card/book-card.component';
     BookFinishedComponent,
     UserProfileComponent,
     BookDetailComponent,
-    BookCardComponent
+    BookCardComponent,
+    BookAddComponent,
+    BookAddCoverComponent
   ],
   imports: [
     BrowserAnimationsModule,
