@@ -26,7 +26,7 @@
                     (input)="checkGenre()"><br>
                 <button class="btn btn-outline-info" [disabled]="disabledGenreBtn" type="submit">Confirm
                     genre</button>
-            </form> 
+            </form>
         </div>
     </div>
     <div class="card col-5">
@@ -36,16 +36,18 @@
                 (ngSubmit)="addBook()">
                 <strong>Title:</strong>
                 <input class="input" [(ngModel)]="book.title" type="text" name="Title" autocomplete="new-password"
-                    (input)="checkBook()" [disabled]="bookCreated"><br>
+                    (input)="checkBook()" [disabled]="bookCreated || !authorDone || bookGenres.length === 0"><br>
                 <strong>International Standad Book Number:</strong>
                 <input class="input" [(ngModel)]="book.isbn" type="text" name="ISBN" autocomplete="new-password"
-                    (input)="checkBook()" [disabled]="bookCreated"><br>
+                    (input)="checkBook()" [disabled]="bookCreated || !authorDone || bookGenres.length === 0"><br>
                 <strong>Publish date:</strong>
                 <input class="input" [(ngModel)]="book.publish_date" type="date" name="PublishDate"
-                    autocomplete="new-password" (input)="checkBook()" [disabled]="bookCreated"><br>
+                    autocomplete="new-password" (input)="checkBook()"
+                    [disabled]="bookCreated || !authorDone || bookGenres.length === 0"><br>
                 <strong>Description:</strong>
                 <input class="input" [(ngModel)]="book.description" type="text" name="Description"
-                    autocomplete="new-password" (input)="checkBook()" [disabled]="bookCreated"><br>
+                    autocomplete="new-password" (input)="checkBook()"
+                    [disabled]="bookCreated || !authorDone || bookGenres.length === 0"><br>
                 <button class="btn btn-outline-info" [disabled]="disabledBookBtn || bookCreated" type="submit">Confirm
                     book</button>
             </form>

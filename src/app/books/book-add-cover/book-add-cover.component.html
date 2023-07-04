@@ -30,7 +30,7 @@
                     </table>
                     <div>
                         <button type="button" class="btn btn-success btn-s"
-                            [disabled]="!uploader?.getNotUploadedItems()?.length">
+                            [disabled]="!uploader?.getNotUploadedItems()?.length" (click)="uploadCover()">
                             <span class="fa fa-upload"></span> Upload
                         </button>
                         <button type="button" class="btn btn-danger btn-s" (click)="uploader?.clearQueue()"

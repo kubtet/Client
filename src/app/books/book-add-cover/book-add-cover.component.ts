@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FileItem, FileUploader } from 'ng2-file-upload';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
-import { Book } from 'src/app/_models/Book';
+import { BookDetails } from 'src/app/_models/BookDetails';
 import { User } from 'src/app/_models/User';
 import { AccountService } from 'src/app/_services/account.service';
 import { BooksService } from 'src/app/_services/books.service';
@@ -21,6 +21,8 @@ export class BookAddCoverComponent implements OnInit {
   hasBaseDropZoneOver = false;
   baseUrl = environment.apiUrl;
 
+  book: BookDetails = new BookDetails();
+
   constructor(private route: ActivatedRoute, private bookService: BooksService, private coverService: CoverService, private accountService: AccountService, private toastr: ToastrService, private router: Router) {
     this.accountService.currentUser$.pipe(take(1)).subscribe({
       next: user => {
@@ -32,6 +34,8 @@ export class BookAddCoverComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.book = history.state.book;
+    console.log(this.book);
 
     this.initializeUploader();
   }
@@ -58,8 +62,22 @@ export class BookAddCoverComponent implements OnInit {
     this.uploader.onSuccessItem = (item, response, status, headers) => {
       if (response) {
         const photo = JSON.parse(response);
-        //this.book.coverPath = photo;
+        this.book.coverPath = photo;
       }
     }
+  }
+
+  uploadCover() {
+    const file = this.uploader!.queue[0]._file;
+  
+    this.coverService.addCover(file, this.book.id).subscribe({
+      next: () => {
+        this.toastr.success('Cover uploaded successfully');
+        this.router.navigateByUrl('');
+      },
+      error: (error) => {
+        this.toastr.error('Error uploading cover!');
+      }
+    });
   }
 }

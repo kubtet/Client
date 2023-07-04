@@ -5,6 +5,7 @@ import { take } from 'rxjs';
 import { Author } from 'src/app/_models/Author';
 import { Book } from 'src/app/_models/Book';
 import { BookCreate } from 'src/app/_models/BookCreate';
+import { BookDetails } from 'src/app/_models/BookDetails';
 import { Genre } from 'src/app/_models/Genre';
 import { AuthorService } from 'src/app/_services/author.service';
 import { BooksService } from 'src/app/_services/books.service';
@@ -17,8 +18,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./book-add.component.css']
 })
 export class BookAddComponent implements OnInit {
-  fullBook = new Book();
   book = new BookCreate();
+  bookDetails = new BookDetails();
   bookGenres: Genre[] = [];
   author = new Author();
   disabledBookBtn: boolean = true;
@@ -49,18 +50,17 @@ export class BookAddComponent implements OnInit {
     this.book.authorId = this.authorId;
     this.book.genresId = this.bookGenres.map(genre => genre.id);
 
-    this.bookService.create(this.book).pipe(take(1)).subscribe();
-
-    this.fullBook.title = this.book.title;
-    this.fullBook.authorName = this.author.name;
-    this.fullBook.authorSurname = this.author.surname;
-    this.fullBook.genres = this.bookGenres;
-    this.fullBook.isbn = this.book.isbn;
-    this.fullBook.publish_date = this.book.publish_date;
-
-    this.router.navigateByUrl('addCover', {state: {book: this.fullBook}});
-
-    this.toastr.success("Book added properly");
+    this.bookService.create(this.book).pipe(take(1)).subscribe({
+      next: book => {
+        this.toastr.success("Book added properly");
+        this.bookDetails = book;
+        console.log(this.bookDetails);
+        this.router.navigateByUrl('addCover', {state: {book: this.bookDetails}});
+      },
+      error: error => {
+        this.toastr.error("Something went wrong");
+      }
+    });
   }
 
   checkBook() {

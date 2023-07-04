@@ -26,6 +26,6 @@ export class BooksService {
   }
 
   create(book: BookCreate) {
-    return this.http.post<BookCreate>(this.baseUrl + 'books', book);
+    return this.http.post<BookDetails>(this.baseUrl + 'books', book);
   }
 }

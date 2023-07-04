@@ -14,7 +14,9 @@ export class CoverService {
   addCover(file: File, bookId: number) {
     const formData = new FormData();
     formData.append('file', file);
-
+  
     return this.http.post(this.baseUrl + 'books/' + bookId + '/addCover', formData);
   }
+  
+  
 }
