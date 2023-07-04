@@ -20,6 +20,6 @@ export class AuthorService {
   }
 
   create(author: Author) {
-    return this.http.post(this.baseUrl + 'author', author);
+    return this.http.post<Author>(this.baseUrl + 'author', author);
   }
 }

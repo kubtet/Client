@@ -47,7 +47,7 @@ export class BookAddComponent implements OnInit {
   }
 
   addBook() {
-    this.book.authorId = this.authorId;
+    this.book.authorId = this.author.id;
     this.book.genresId = this.bookGenres.map(genre => genre.id);
 
     this.bookService.create(this.book).pipe(take(1)).subscribe({
@@ -55,7 +55,7 @@ export class BookAddComponent implements OnInit {
         this.toastr.success("Book added properly");
         this.bookDetails = book;
         console.log(this.bookDetails);
-        this.router.navigateByUrl('addCover', {state: {book: this.bookDetails}});
+        this.router.navigateByUrl('addCover', { state: { book: this.bookDetails } });
       },
       error: error => {
         this.toastr.error("Something went wrong");
@@ -73,29 +73,41 @@ export class BookAddComponent implements OnInit {
   }
 
   addGenre() {
-    if (!this.genres.find(x => x.name === this.genre.name) && !this.bookGenres.find(x => x.name === this.genre.name)) {
-      this.genreService.create(this.genre).pipe(take(1)).subscribe({
-        next: createdGenre => {
-          this.genres.push(createdGenre);
-          this.bookGenres.push({ ...createdGenre }); // Create a new instance of the genre object
-          this.toastr.success("Genre added properly");
-        },
-        error: error => {
-          this.toastr.error("Something wrong with a new genre")
-        }
-      });
-    } else {
-      this.genreId = (Number)(this.genres.find(x => x.name === this.genre.name)?.id);
-      this.genreService.getById(this.genreId).subscribe({
-        next: genre => {
-          this.genre = genre;
-          this.bookGenres.push({ ...genre }); // Create a new instance of the genre object
-          this.toastr.success("Genre added properly");
-        },
-        error: error => {
-          this.toastr.error("Something wrong with an old genre")
-        }
-      });
+    if (!this.bookGenres.includes(this.genre)) {
+      if (!this.genres.find(x => x.name === this.genre.name) && !this.bookGenres.find(x => x.name === this.genre.name)) {
+        this.genreService.create(this.genre).pipe(take(1)).subscribe({
+          next: createdGenre => {
+            if (!this.genres.includes(createdGenre)) {
+              this.genres.push(createdGenre);
+            }
+            if (!this.bookGenres.includes(createdGenre)) {
+              this.genre = createdGenre
+              this.bookGenres.push(createdGenre);
+            }
+            this.toastr.success("Genre added properly");
+          },
+          error: error => {
+            this.toastr.error("Something wrong with a new genre")
+          }
+        });
+      } else {
+        this.genreId = (Number)(this.genres.find(x => x.name === this.genre.name)?.id);
+        this.genreService.getById(this.genreId).subscribe({
+          next: genre => {
+            if (!this.bookGenres.includes(genre)) {
+              this.bookGenres.push(genre);
+              this.genre = genre;
+            }
+            this.toastr.success("Genre added properly");
+          },
+          error: error => {
+            this.toastr.error("Something wrong with an old genre")
+          }
+        });
+      }
+    }
+    else {
+      this.toastr.error("This genre is already added")
     }
   }
 
@@ -135,7 +147,12 @@ export class BookAddComponent implements OnInit {
       })
     }
     else {
-      this.authorService.create(this.author).pipe(take(1)).subscribe();
+      this.authorService.create(this.author).subscribe({
+        next: author => {
+          this.author = author,
+            console.log(this.author)
+        }
+      });
     }
     this.authorDone = true;
     this.disabledAuthorBtn = true;

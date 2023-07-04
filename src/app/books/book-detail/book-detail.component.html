@@ -3,12 +3,12 @@
         <img src="{{ book.coverPath }}" alt="{{ book.title }}" class="card-img-top img-thumbnail">
     </div>
     <div class=" card col-5">
-        <div class="card-body">
+        <div class="card-body" >
             <h1 class="mb-5 mt-3" style="color: rgb(72, 77, 77);">{{ book.title }}</h1>
             <strong>Author:</strong>
             <p>{{ book.author.name }} {{ book.author.surname }}</p>
-            <strong>Genres:</strong>
-            <a *ngFor="let genre of book.genres"><br>{{ genre.name }}</a><br><br>
+            <strong >Genres:</strong><br/>
+            <a *ngFor="let genre of book.genres">{{ genre.name}}<br></a><br>
             <strong>Publish date:</strong>
             <p>{{ book.publish_date | date: 'dd-MM-yyyy'}}</p>
             <strong>International Standard Book Number:</strong>
