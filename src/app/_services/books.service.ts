@@ -78,4 +78,22 @@ export class BooksService {
   delete(id: number) {
     return this.http.delete(this.baseUrl + 'books/' + id);
   }
+
+  addAsRead(id: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.token
+    });
+
+    return this.http.put(this.baseUrl + 'books/' + id + '/read', null, { headers: headers });
+  }
+
+  getReadBooks() {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.token
+    });
+
+    return this.http.get<Book[]>(this.baseUrl + 'books/readbooks', { headers: headers });
+  }
 }

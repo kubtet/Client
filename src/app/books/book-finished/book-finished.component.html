@@ -1,1 +1,25 @@
-<p>book-finished works!</p>
+<div class="row">
+    <div class="card col-10">
+        <div class="card-body">
+            <h1
+                style="font-size: xx-large; margin-bottom: 25px; margin-top: 25px; text-align: center; color: rgb(72, 77, 77);">
+                Read books</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let book of books; let i = index">
+                    <tr routerLink="/books/{{ book.id }}">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ book?.title }}</td>
+                        <td>{{ book?.authorName }} {{ book?.authorSurname }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

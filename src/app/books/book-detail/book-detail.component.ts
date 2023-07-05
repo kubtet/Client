@@ -38,4 +38,10 @@ export class BookDetailComponent implements OnInit {
     })
   }
 
+  addAsRead() {
+    this.booksService.addAsRead(this.book!.id).subscribe({
+      next: () => this.toastr.success('Read')
+    })
+  }
+
 }
