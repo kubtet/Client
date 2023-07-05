@@ -75,8 +75,7 @@ export class BooksService {
     return this.http.get<Book[]>(this.baseUrl + 'books/toread', { headers: headers });
   }
 
-  delete() {
-    console.log("deleted");
-    return 0;
+  delete(id: number) {
+    return this.http.delete(this.baseUrl + 'books/' + id);
   }
 }

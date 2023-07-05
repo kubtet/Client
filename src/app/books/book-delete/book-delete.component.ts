@@ -1,4 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Book } from 'src/app/_models/Book';
 import { BooksService } from 'src/app/_services/books.service';
@@ -11,7 +13,7 @@ import { BooksService } from 'src/app/_services/books.service';
 export class BookDeleteComponent implements OnInit {
   books: Book[] = [];
 
-  constructor(private bookService: BooksService, private toastr: ToastrService) { }
+  constructor(private bookService: BooksService, private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadBooks();
@@ -25,8 +27,14 @@ export class BookDeleteComponent implements OnInit {
     })
   }
 
-  delete() {
-    this.bookService.delete();
+  delete(id: number) {
+    this.bookService.delete(id).subscribe({
+      next: () => {
+        this.router.navigateByUrl('/delete'),
+        this.toastr.success('Deleted correctly')
+      },
+      error: error => console.log(error)
+    });
   }
 
 }
